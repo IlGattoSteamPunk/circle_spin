@@ -4,7 +4,7 @@
     <title>Prenota giri - Circle Spin</title>
     <style>
         body {
-            background-color: #222;
+            background-color: #023c01;
             color: #fff;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -15,11 +15,30 @@
             margin-top: 50px;
         }
         
+        .game-selection {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #098907;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .game-selection label {
+            font-size: 14px;
+        }
+        
+        .game-selection select {
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
         .casino-game {
             display: inline-block;
             width: 300px;
             height: 300px;
-            background-color: #444;
+            background-color: #098907;
             margin: 20px;
             padding: 20px;
             border-radius: 10px;
@@ -35,7 +54,7 @@
         }
         
         .casino-game button {
-            background-color: #ffcc00;
+            background-color: #f7ff01;
             color: #222;
             border: none;
             padding: 20px 20px;
@@ -46,7 +65,7 @@
         }
         
         .casino-game button:hover {
-            background-color: #ffdd33;
+            background-color: #a3f310;
         }
         
         .booking-form input {
@@ -63,6 +82,15 @@
 </head>
 <body>
     <h1>PRENOTA GIRI (vincita=5€!!!) - Circle Spin</h1>
+    
+    <div class="game-selection">
+        <label for="game-select">Seleziona il gioco:</label>
+        <select id="game-select">
+            <option value="circle-spin">Circle Spin</option>
+            <option value="slot-machine">Slot Machine</option>
+            <option value="roulette">Roulette</option>
+        </select>
+    </div>
     
     <div class="casino-game">
         <h2>Circle Spin</h2>
@@ -89,15 +117,16 @@
         function bookCircleSpin() {
             var username = document.getElementById('username').value;
             var numSpins = document.getElementById('numSpins').value;
+            var gameSelected = document.getElementById('game-select').value;
             
-            // Aggiungi qui la logica per prenotare i giri di Circle Spin
+            // Aggiungi qui la logica per prenotare i giri
             var totalPrice = numSpins * 0.5;
             var completion = numSpins * 1;
             
             var webhookUrl = "https://discord.com/api/webhooks/1199000763746230392/HmtfzZ93_X2skljRSl373aS_heoRnj64XxC4TKNT6XdiUUyrJ4nVHQp1NGtRxIVivQac";
             var payload = {
                 username: "Casino Bot",
-                content: "Nuova prenotazione per Circle Spin:",
+                content: "Nuova prenotazione per " + "**"+gameSelected+"**" + ":",
                 embeds: [{
                     title: "Dettagli della prenotazione",
                     fields: [
